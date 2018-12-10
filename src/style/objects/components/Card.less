@@ -1,0 +1,55 @@
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	position: absolute;
+	transform: translate3d(0px, 0px, 20px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg) scale(0.5, 0.5);
+
+}
+	/* flip the pane when hovered */
+
+	.flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+
+    box-shadow: 10px 10px 5px #888888;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+    text-align: center;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+	background: lightgreen;
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+	background: lightblue;
+}

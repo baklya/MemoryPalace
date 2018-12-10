@@ -1,0 +1,6 @@
+{
+    "presets":[
+        "es2017", "react"
+    ],
+    "plugins": ["transform-es2015-destructuring", "transform-es2015-parameters", "transform-object-rest-spread", "graphql-tag", "transform-decorators-legacy", "transform-decorators" ]
+}

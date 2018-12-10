@@ -1,0 +1,64 @@
+
+html, body {
+	margin: 0;
+	overflow: hidden;
+	width: 100%;
+    height: 100%;
+}
+
+.camera {
+	&__viewport {
+	    position: absolute;
+
+	    width: 100%;
+	    height: 100%;
+	    background: transparent;
+	    transform-style: preserve-3d;
+	    perspective: 600px;
+	}
+	
+	&__crosshair-wrap {
+	    position: absolute;
+	    display: flex;
+	    align-items: center;
+		justify-content: center;
+        pointer-events: none;
+	    left: 0;
+	    top: 0;
+
+	    width: 100%;
+	    height: 100%;
+	    //background: green;
+	    z-index: 10;
+	    //transform-style: preserve-3d;
+	    //perspective: 600px;
+	}
+	
+
+	&__crosshair {
+	    width: 30px;
+	    height: 30px;
+
+	}
+
+	&__view {
+		transition-duration: 0.4s;
+		
+		position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    transform-style: preserve-3d;
+	}
+	
+	&__move-plane {
+		transition-duration: 0.2s;
+		
+        position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    transform-style: preserve-3d;
+        //transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+	}
+	
+	
+}

@@ -1,0 +1,7 @@
+http://halls-of-mind-baklya.c9users.io/app.html
+
+
+https://netflix.github.io/falcor/video-tutorials/intro-to-json-graph.html
+
+a11y
+https://github.com/chenglou/react-motion - интересная библиотека анимаций, возможно стоит использовать ее для всего

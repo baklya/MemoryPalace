@@ -1,0 +1,52 @@
+{
+  "name": "react-components",
+  "version": "0.0.1",
+  "description": "CSS 3d react components",
+  "main": "index.js",
+  "author": "baklya",
+  "license": "MIT",
+  "dependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "metascraper": "^3.10.4",
+    "react": "^16.3.0",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^16.3.0",
+    "react-draggable": "^3.0.5",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "devDependencies": {
+    "apollo-cache-inmemory": "^1.3.11",
+    "apollo-client": "^2.4.7",
+    "apollo-link": "^1.2.4",
+    "apollo-link-http": "^1.5.7",
+    "apollo-link-state": "^0.4.2",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-graphql-tag": "^1.6.0",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.6",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "react-apollo": "^2.3.1",
+    "style-loader": "^0.19.0",
+    "subscriptions-transport-ws": "^0.9.15",
+    "svg-inline-loader": "^0.8.0"
+  },
+  "scripts": {
+    "node": "node ./src/server/Start.js",
+    "webpack": "webpack-dev-server -d --watch --host $IP --port $PORT --history-api-fallback --public $C9_HOSTNAME --open --hot",
+    "start": "concurrently --kill-others \"npm run webpack\" \"npm run node\"",
+    "dev": "concurrently --kill-others \"npm run webpack\" \"npm run node\""
+  }
+}

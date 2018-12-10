@@ -1,0 +1,44 @@
+.texture() {
+    background-position-x: left;
+    background-position-y: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.tile {
+	&__container {
+		border: none;
+		
+		backface-visibility: hidden;
+        position: absolute;
+        background-color: antiquewhite;
+	    
+	    // TODO +0.5px - hack for borders
+	    width: 300.5px;
+	    height: 300.5px;
+	    transform-style: preserve-3d;
+        
+
+
+        &--hexagonal {
+        	.texture();
+        	
+    	    background-image: url("~ROOT/resourses/textures/floors/Hexagonal.jpg");
+        }
+        
+        &--bricks {
+        	.texture();
+        	
+        	background-image: url("~ROOT/resourses/textures/walls/BricksSmallOld.jpg");
+    	    //background-image: url("~ROOT/resourses/textures/walls/Hex.gif");
+        }
+        
+        
+        &--wood-planks {
+        	.texture();
+        	
+    	    background-image: url("~ROOT/resourses/textures/wood/WoodPlanksPainted.jpg");
+        }
+        
+	}
+}
