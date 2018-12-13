@@ -12,7 +12,18 @@ import 'ROOT/style/objects/geometry/general/Plane.less';
 
 
 //BricksSmallOld
-import * as bricksSmallOld from 'ROOT/resourses/textures/walls/BricksSmallOld.jpg'
+import * as bricks from 'ROOT/resourses/textures/walls/BricksSmallOld.jpg'
+import * as hexagonal from 'ROOT/resourses/textures/floors/Hexagonal.jpg'
+
+import * as woodPlanks from 'ROOT/resourses/textures/wood/WoodPlanksPainted.jpg'
+///hom/src/resourses/textures/wood/WoodPlanksPainted.jpg
+
+const textureMap = {
+	bricks: bricks,
+	hexagonal: hexagonal,
+	'wood-planks': woodPlanks,
+}
+
 
 //import * as hex from 'ROOT/resourses/textures/walls/Hex.gif'
 
@@ -76,11 +87,11 @@ export class Plane extends React.Component {
 			<div className={ 'plane__container--inner' } style={ style }>
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width={ style.width } height={ style.height }>
 					<defs>
-					  <pattern id="img1" patternUnits="userSpaceOnUse" width="300" height="300">
-					    <image xlinkHref={ bricksSmallOld } x="0" y="0" width="300" height="300" />
+					  <pattern id={ this.props.texture } patternUnits="userSpaceOnUse" width="300" height="300">
+					    <image xlinkHref={ textureMap[this.props.texture] } x="0" y="0" width="300" height="300" />
 					  </pattern>
 					</defs>
-					<rect width={ style.width } height={ style.height } fill="url(#img1)" />
+					<rect width={ style.width } height={ style.height } fill={ `url(#${this.props.texture})` } />
 				</svg>
 			</div>
 		);
