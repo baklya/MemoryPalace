@@ -1,3 +1,9 @@
+
+
+
+export const TILE_SIZE = 300;
+
+
 export const HORIZONTAL_DIRECTIONS_COUNT = 4;
 
 export const DIRECTION = {

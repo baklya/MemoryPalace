@@ -454,7 +454,6 @@ export class Board extends React.Component {
 
 
 		const xFromLeft = planePos === DIRECTION.NORTH;
-
 		const zFromLeft = planePos === DIRECTION.WEST;
 
 		const topLeftPos = {
