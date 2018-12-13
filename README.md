@@ -6,7 +6,7 @@
     |_| |_|\__,_|_|_|___/  \___/|_|   |_| |_| |_|_|_| |_|\__,_|
                                                                
 
-3d web info storage
+3d web application to store different kinds of data
 
 ## Running the app
 
