@@ -11,9 +11,8 @@ import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { withClientState } from 'apollo-link-state';
 import ApolloClient from 'apollo-client';
 
-
-
-const WSClient = new SubscriptionClient(`ws://halls-of-mind-baklya.c9users.io:8081/api/ws`, {
+const WS_HOST = __WS_HOST__;
+const WSClient = new SubscriptionClient(`${WS_HOST}api/ws`, {
 	reconnect: true,
 });
 

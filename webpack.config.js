@@ -1,6 +1,8 @@
 const path = require('path');
-
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const WS_HOST = `'ws://${process.env.C9_HOSTNAME || '0.0.0.0'}:8081/'`;
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './src/app.html',
@@ -40,5 +42,8 @@ module.exports = {
     },
     plugins: [
         HtmlWebpackPluginConfig,
+        new webpack.DefinePlugin({
+            __WS_HOST__: WS_HOST,
+        })
     ]
 };
