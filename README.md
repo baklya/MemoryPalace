@@ -9,7 +9,7 @@
                                    |___/                             
    ```                                                            
 
-3d web application to store different kinds of data
+3d web application for storing different kinds of data
 
 ## Requirements
     node >= 8.x
