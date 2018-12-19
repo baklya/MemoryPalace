@@ -98,9 +98,16 @@ const LinkType = new GraphQLObjectType({
 	fields: () => ({
 		title: { type: GraphQLString },
 		description: { type: GraphQLString },
+		publisher: { type: GraphQLString },
+		
+		author: { type: GraphQLString },
+		
 		image: { type: GraphQLString },
+		logo: { type: GraphQLString },
 		url: { type: GraphQLString },
 		lang: { type: GraphQLString },
+		video: { type: GraphQLString },
+
 	})
 });
 
@@ -112,6 +119,7 @@ const BoardType = new GraphQLObjectType({
 		x: { type: GraphQLFloat },
 		y: { type: GraphQLFloat },
 		links: { type: GraphQLList(GraphQLString) },
+		currentLink: { type: GraphQLList(GraphQLString) },
 	})
 });
 
@@ -135,9 +143,14 @@ exports.schema = new GraphQLSchema({
 					return metaDataResolve(link).then(d => ({
 						title: d.title,
 						description: d.description,
+						logo: d.logo,
 						image: d.image,
 						url: d.url,
 						lang: d.lang,
+
+						publisher: d.publisher,
+						author: d.author,
+						video: d.video,
 					}));
 				}
 			},

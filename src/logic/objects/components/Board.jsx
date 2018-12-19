@@ -3,22 +3,16 @@ import React from 'react';
 import { graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
-
-import { DIRECTION } from 'ROOT/server/logic/Movement';
+import { TILE_SIZE, DIRECTION } from 'ROOT/server/logic/Movement';
 
 import { Scrollbars } from 'react-custom-scrollbars';
 import DraggableCore from 'ROOT/logic/_libs/react-draggable';
 
-
-import { PlaneContext, BoardQuery, BOARD_QUERY2 } from 'ROOT/logic/objects/geometry/general/Plane.jsx';
+import { PlaneContext } from 'ROOT/logic/objects/geometry/general/Plane.jsx';
 import { Linker } from 'ROOT/logic/objects/components/Linker.jsx';
 import { Overlay } from 'ROOT/logic/objects/components/menu/Overlay.jsx';
 
 import 'ROOT/style/objects/components/Board.less';
-
-
-
-
 
 const DragBoard = gql `
   mutation DragBoard($id: String!, $x: Float!, $y: Float!) {
@@ -39,7 +33,6 @@ const AddLink = gql `
   }
 `;
 
-
 const ClickOnBoard = gql `
   mutation ClickOnBoard($boardId: String!) {
     clickOnBoard(boardId: $boardId) {
@@ -48,23 +41,8 @@ const ClickOnBoard = gql `
   }
 `;
 
-
-
-//const BoardQuery = gql`
-//	query BoardQuery($id: String!) {
-//	  boards(id: $id) {
-//	    id
-//	    x
-//	    y
-//	  }
-//	}
-//`;
-
-//console.log(BoardQuery)
-
 // TODO add add new card feature
 // TODO rotate wall 
-
 
 // TODO add iframe with https://awwapp.com/
 
@@ -76,12 +54,10 @@ const ClickOnBoard = gql `
 // TODO https://www.npmjs.com/package/metascraper
 
 
-
 @withApollo
 @graphql(ClickOnBoard, { name: 'clickOnBoard' })
 @graphql(AddLink, { name: 'addLink' })
 @graphql(DragBoard, { name: 'dragBoard' })
-//@connect(mapStateToProps, mapDispatchToProps)
 export class Board extends React.Component {
 	constructor(props) {
 		super(props);
@@ -99,8 +75,6 @@ export class Board extends React.Component {
 			showAddLinkDialog: false,
 
 		};
-
-
 
 
 
@@ -164,8 +138,6 @@ export class Board extends React.Component {
 
 		this._customXYCalc = (planeStart, planePos) => {
 
-
-
 			// TODO get user pos
 
 			const { client } = this.props;
@@ -198,22 +170,14 @@ export class Board extends React.Component {
 
 					break;
 				case DIRECTION.NORTH:
-					//xdeg, ydeg
-
-					// при наклонах - есть какая-то зависимость от центра камеры 
-
-
 					distance = Math.abs(planeStart.z - pos.z);
-					console.log(planeStart.z, pos.z)
 
 					break;
 				case DIRECTION.WEST:
-
 					distance = Math.abs(planeStart.x - pos.x);
 
 					break;
 				case DIRECTION.EAST:
-					//right = Math.abs(planeStart.z - palneEnd.z) * TILE_SIZE - BOARD_SIZE;
 					distance = Math.abs(1 + planeStart.x - pos.x);
 
 					break;
@@ -222,21 +186,10 @@ export class Board extends React.Component {
 
 			return (x, y) => {
 				const PERSP = 600;
-				const TILE_SIZE = 300;
-
-
 
 				// TODO проработать драг для всех положений плоскостей и камер
-				// 6 - plane z pos for north
 
-				//const a = 1;
-				//const b = 1;
-
-
-
-				//const e = Math.sqrt(1 - b*b / a*a)
-
-				const coeff = distance * TILE_SIZE / PERSP; // * e;
+				const coeff = distance * TILE_SIZE / PERSP;
 
 
 				return {
@@ -251,9 +204,7 @@ export class Board extends React.Component {
 
 		this._getContainerBounds = (planeStart, palneEnd, planePos) => {
 			const BOARD_SIZE = 300;
-			const TILE_SIZE = 300;
 			// для разных положений нужно использовать разные оси 
-
 
 			let right;
 			switch (planePos) {
@@ -266,8 +217,6 @@ export class Board extends React.Component {
 					right = Math.abs(planeStart.z - palneEnd.z) * TILE_SIZE - BOARD_SIZE;
 					break;
 			}
-
-
 
 			return { top: 0, left: 0, right: right, bottom: Math.abs(planeStart.y - palneEnd.y) * TILE_SIZE - BOARD_SIZE }
 		}
@@ -293,7 +242,6 @@ export class Board extends React.Component {
 				`,
 			});
 
-
 			const boardId = this.props.id;
 			const thisBoard = boards.find(board => boardId === board.id);
 			if (thisBoard) {
@@ -311,35 +259,7 @@ export class Board extends React.Component {
 					variables: {
 						boardId: boardId,
 					},
-					
-
-					//optimisticResponse: {
-					//	__typename: 'Mutation',
-					//	addLink: {
-					//		__typename: 'Board',
-					//		id: this.props.id,
-					//		links: this.props.links.concat(this._linkInputValue.trim()),
-					//	},
-					//},
-					
-					//refetchQueries: [
-					//	{
-					//		query: BoardQuery,
-					//		variables: { planeId: thisBoard.planeId }
-					//	}
-					//]
 				})
-				
-				//const updatedBoards = boards.filter(board => boardId !== board.id);
-				//client.writeData({
-				//	data: {
-				//		state: {
-				//			boards: [...updatedBoards, thisBoard],
-				//			__typename: 'State',
-				//		},
-				//	} 
-				//});
-				
 			}
 		}
 
@@ -348,9 +268,7 @@ export class Board extends React.Component {
 				return (
 					<Overlay>
 						<span>Add link</span>
-						
 						<input name="link" type="text" onChange={ this._linkInputChange }/>
-						
 						<button onClick={this._addLink}>Submit</button>
 			        </Overlay>
 				)
@@ -519,18 +437,11 @@ export class Board extends React.Component {
 			<PlaneContext.Consumer>
 				{(context) => {
 					const calculatedPos = this._calculatePos(context.start, context.end, context.pos);
-					
 					const customXYCalc = this._customXYCalc(context.start, context.pos);
-					
 
 					return (
-					
-					
-			
 						<div id={this.props.id} onMouseDown={this._boardClick} className="board__outer-container"  style={{ transform: calculatedPos }}>
-
 							  { this._showAddLinkDialog() }
-
 						      <DraggableCore
 						        //axis="x"
 						        //disabled={true}
@@ -544,7 +455,6 @@ export class Board extends React.Component {
 						        onStop={ this._handleStop }
 						        customXYCalc={ customXYCalc }
 						        >
-
 									<div className="board__container">
 										<div className="board__header">Title</div>
 									
@@ -554,30 +464,16 @@ export class Board extends React.Component {
 									
 										<div className="board__content">
 											<Scrollbars autoHide>
-										
 												<div style={{width: '100%', height: '100%'}} >
 													{ links.map((link, index) =>
 													    <Linker key={ index } link={link}></Linker>
 													 ) }
 												</div>
-											
 											</Scrollbars>
-											
 										</div>
-										
 									</div>
 						      </DraggableCore>
-					
-
 						</div>
-					
-					
-					
-
-					
-					
-					
-
 					);
 				}}
 			</PlaneContext.Consumer>

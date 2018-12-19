@@ -14,6 +14,7 @@
     "graphql": "^14.0.2",
     "graphql-subscriptions": "^1.0.0",
     "metascraper": "^3.10.4",
+    "metascraper-youtube": "^4.8.1",
     "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {

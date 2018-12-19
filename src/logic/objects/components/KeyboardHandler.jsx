@@ -110,9 +110,6 @@ export class KeyboardHandler extends React.Component {
 
 
 			if (event.which === 66) { // b - build menu
-			
-				console.log('client', client)
-			
 				const { showBuildMenu } = client.readQuery({
 				  query: gql`
 					  query InitState {
