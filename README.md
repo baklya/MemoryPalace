@@ -11,8 +11,12 @@
 
 3d web application to store different kinds of data
 
+## Installing the app
+    $ cd src/server/
+    $ npm i
+    $ cd ../../
+    $ npm i
+
 ## Running the app
-
-
     $ npm start
 
