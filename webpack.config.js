@@ -15,7 +15,7 @@ module.exports = {
         port: process.env.PORT || 8080,
         open: true,
         public: process.env.C9_HOSTNAME || '',
-        openPage: '/app.html',
+        openPage: 'app.html',
     },
     entry: {
         main: './src/app.js',
