@@ -45,7 +45,7 @@
   },
   "scripts": {
     "node": "node ./src/server/Start.js",
-    "webpack": "webpack-dev-server -d --watch --host $IP --port $PORT --history-api-fallback --public $C9_HOSTNAME --open --hot",
+    "webpack": "webpack-dev-server -d --watch --history-api-fallback --hot",
     "start": "concurrently --kill-others \"npm run webpack\" \"npm run node\"",
     "dev": "concurrently --kill-others \"npm run webpack\" \"npm run node\""
   }
