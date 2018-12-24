@@ -38,6 +38,7 @@ module.exports = {
             { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.(png|jpg|gif)$/, loader: 'file-loader', exclude: /node_modules/ },
+            { test: /\.glsl$/, loader: 'webpack-glsl-loader', exclude: /node_modules/ },
         ],
     },
     plugins: [
