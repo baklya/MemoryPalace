@@ -6,19 +6,19 @@
   "author": "baklya",
   "license": "MIT",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "apollo-server-express": "^2.2.5",
-    "express": "^4.16.4",
-    "express-graphql": "^0.7.1",
-    "got": "^9.0.0",
-    "graphql": "^14.0.2",
-    "graphql-subscriptions": "^1.0.0",
-    "metascraper": "^3.10.4",
-    "metascraper-youtube": "^4.8.1",
-    "subscriptions-transport-ws": "^0.9.15"
+    "@babel/polyfill": "7.0.0",
+    "apollo-server-express": "2.2.5",
+    "express": "4.16.4",
+    "express-graphql": "0.7.1",
+    "got": "9.0.0",
+    "graphql": "14.0.2",
+    "graphql-subscriptions": "1.0.0",
+    "metascraper": "3.10.4",
+    "metascraper-youtube": "4.8.1",
+    "subscriptions-transport-ws": "0.9.15"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0"
+    "babel-preset-env": "1.7.0",
+    "babel-register": "6.26.0"
   }
 }
