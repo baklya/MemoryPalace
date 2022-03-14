@@ -13,8 +13,8 @@
     "got": "9.0.0",
     "graphql": "14.0.2",
     "graphql-subscriptions": "1.0.0",
-    "metascraper": "3.10.4",
-    "metascraper-youtube": "4.8.1",
+    "metascraper": "5.26.0",
+    "metascraper-youtube": "5.26.0",
     "subscriptions-transport-ws": "0.9.15"
   },
   "devDependencies": {
